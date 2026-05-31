@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player_iframe/youtube_player_iframe.dart'; // Import baru
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import 'movie_model.dart';
 import 'movie_services.dart';
 
@@ -30,7 +30,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
 
     if (youtubeKey != null && mounted) {
       setState(() {
-        // MENGGUNAKAN ATURAN API BARU
+   
         _youtubeController = YoutubePlayerController.fromVideoId(
           videoId: youtubeKey,
           autoPlay: true,
@@ -52,7 +52,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
 
   @override
   void dispose() {
-    _youtubeController?.close(); // Menggunakan close() untuk mematikan video
+    _youtubeController?.close(); 
     super.dispose();
   }
 
