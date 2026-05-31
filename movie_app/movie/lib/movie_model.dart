@@ -4,7 +4,7 @@ class MovieModel {
   final String overview;
   final String? posterPath;
   final String? backdropPath;
-  final double voteAverage; // <--- Tambahan untuk nilai rating
+  final double voteAverage; 
 
   MovieModel({
     required this.id,
@@ -23,7 +23,7 @@ class MovieModel {
       posterPath: json['poster_path'],
       backdropPath: json['backdrop_path'],
       voteAverage: (json['vote_average'] ?? 0)
-          .toDouble(), // <--- Ambil data rating
+          .toDouble(), 
     );
   }
 }
