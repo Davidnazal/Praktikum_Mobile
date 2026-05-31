@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'movie_model.dart';
 
 class MovieService {
-  // TODO: PASTIKAN API KEY KAMU MASIH ADA DI SINI
   static const String _apiKey = '42b44f227c9fff54946ccc5fa97ad067';
   static const String _baseUrl = 'https://api.themoviedb.org/3';
 
@@ -60,9 +59,6 @@ class MovieService {
     }
   }
 
-  // ==========================================
-  // FUNGSI BARU: AMBIL TRAILER YOUTUBE
-  // ==========================================
   Future<String?> fetchMovieTrailer(int movieId) async {
     final uri = Uri.parse('$_baseUrl/movie/$movieId/videos?api_key=$_apiKey');
     final response = await http.get(uri);
@@ -71,13 +67,12 @@ class MovieService {
       final data = jsonDecode(response.body);
       final List<dynamic> videosJson = data['results'];
 
-      // Cari video yang dari YouTube dan tipenya 'Trailer'
       for (var video in videosJson) {
         if (video['site'] == 'YouTube' && video['type'] == 'Trailer') {
-          return video['key']; // Mengembalikan ID Video YouTube
+          return video['key'];
         }
       }
-      return null; // Jika tidak ada trailer
+      return null;
     } else {
       return null;
     }
